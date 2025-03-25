@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html>
+<body>
+<h1>The progress element</h1>
+
+
+
+<!--當按下 load button ，就設計一個計時器 ，每10毫秒， 就將 value 遞增， 一直到 100 ，就停止計時器，將progress 設回初始值，如果計時器還在跑就不能新增計時器-->
+
+<script>
+function load() {
+  const elem = document.getElementById("myBar");
+  let width = 0;
+  const id = setInterval(frame, 10);
+
+  function frame() {
+    if (width >= 100) {
+      clearInterval(id);
+    } else {
+      width++;
+      elem.style.width = width + '%';
+      elem.innerHTML = width  + '%';
+    }
+  }
+}
+</script>
+
+<style>
+#myProgress {
+  width: 100%;
+  background-color: #ddd;
+}
+
+#myBar {
+  width: 0%;
+  height: 30px;
+  background-color: #4CAF50;
+  text-align: center;
+  line-height: 30px;
+  color: white;
+}
+</style>
+
+<div id="myProgress">
+  <div id="myBar">0%</div>
+</div>
+<br>
+<button onclick="load()">Load</button>
+</body>
+</html>
